@@ -1,0 +1,68 @@
+#!/usr/bin/env ruby
+#--
+# Author:: James Turnbull (<james@lovedthanlost.net>)
+# Copyright:: Copyright (c) 2011 James Turnbull
+# License:: Apache License, Version 2.0
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+
+$:.unshift(File.expand_path(File.join(File.dirname(__FILE__), "..", "lib")))
+
+require 'rubygems'
+require 'optparse'
+require 'zdpop/populator'
+require 'zdpop/version'
+
+options = {}
+
+optparse = OptionParser.new do |opts|
+  # Set a banner, displayed at the top
+  # of the help screen.
+  opts.banner = 'Usage: zdpop [options] ...'
+
+  opts.separator ''
+  opts.separator 'Configuration options:'
+
+  options[:cfile] = '/etc/zdpop_config.yaml'
+  opts.on( '-c', '--config-file', 'The location of the zdpop configuration file.') { |cfile|
+    options[:cfile] = cfile
+  }
+
+  options[:dfile] = '/tmp/zdpop_data.csv'
+  opts.on( '-d', '--data-file', 'The location of the CSV data file containing the users and orgs to be created.') { |dfile|
+    options[:dfile] = dfile
+  }
+
+  opts.separator ""
+  opts.separator "Common options:"
+
+  opts.on_tail('-h', '--help', 'Display this screen' ) do
+    puts opts
+    exit
+  end
+
+  opts.on_tail("--version", "Show version") do
+    puts Zdpop::Version::VERSION
+    exit
+  end
+end
+
+begin
+  optparse.parse!
+  Zdpop::Populator.new(options[:cfile],options[:dfile])
+rescue OptionParser::InvalidArgument, OptionParser::InvalidOption, OptionParser::MissingArgument
+  puts $!.to_s
+  puts optparse
+  exit
+end
