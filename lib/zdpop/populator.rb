@@ -4,7 +4,7 @@ require 'csv'
 begin
   require 'httparty'
 rescue LoadError => e
-  Puppet.info "You need the `httparty` gem to use the Zendesk Populator"
+  puts "You need the `httparty` gem to use the Zendesk Populator"
 end
 
 module Zdpop
