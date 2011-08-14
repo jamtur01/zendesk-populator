@@ -4,22 +4,20 @@ zendesk-populator
 Description
 -----------
 
+A simple command line tool to populate Zendesk organizations and users
+from a CSV file.
 
 Requirements
 ------------
 
 * `httparty`
-* `json`
-* `csv`
 
 Installation & Usage
 -------------------
 
-1.  Install the `httparty` and `json` gems on your Puppet master
+1.  Install the zendesk-populator via the gem
 
-        $ sudo gem install httparty json
-
-2.  Install the zendesk-populator via the gem
+        $ gem install zendesk-populator
 
 3.  Update the `zendesk_site`, `zendesk_user` and `zendesk_password` 
     variables in the `zdpop_config.yaml` file. The default location for the
