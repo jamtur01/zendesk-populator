@@ -60,7 +60,7 @@ end
 
 begin
   optparse.parse!
-  Zdpop::Populator.new(options[:cfile],options[:dfile])
+  Zdpop::Populator.new(options)
 rescue OptionParser::InvalidArgument, OptionParser::InvalidOption, OptionParser::MissingArgument
   puts $!.to_s
   puts optparse

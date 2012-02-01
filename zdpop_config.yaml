@@ -1,4 +1,4 @@
 ---
-:zendesk_site: 'site'
-:zendesk_user: 'user'
-:zendesk_password: 'password'
+:zendesk_site: 'https://support.example.com'
+:zendesk_user: user@example.com
+:zendesk_password: password
