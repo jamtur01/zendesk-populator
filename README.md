@@ -4,35 +4,61 @@ zendesk-populator
 Description
 -----------
 
-A simple command line tool to populate Zendesk organizations and users
+Zendesk Populator has two components:
+
+* A front-end for adding users to a DB and exporting to CSV
+* A simple command line tool to populate Zendesk organizations and users
 from a CSV file.
 
-Requirements
-------------
+They'll shortly also be integrated but currently run seperately.
 
-* `httparty`
 
-Installation & Usage
--------------------
+## Front-End ##
 
-1.  Install the zendesk-populator via the gem
+### Installation & Usage ###
 
-        $ gem install zendesk-populator
+1. Run bundler.
 
-3.  Update the `zendesk_site`, `zendesk_user` and `zendesk_password` 
+        $ bundle install
+
+2. Create config.yml and database.yml from the example files
+
+3. Run database migration.
+
+        $ rake db:migrate
+
+4. Rackup the application.
+
+5. You can now enter new users. You must supply the company name, full
+   name and email address.
+
+6. Browse to http://application/backstage to see the currently included
+   users and download them as a CSV file. This section is password 
+   protected using the username and password defined in the config.yml
+   file.
+
+## Command line tool ##
+
+### Installation & Usage ###
+
+1. Run bundler
+
+2.  Update the `zendesk_site`, `zendesk_user` and `zendesk_password` 
     variables in the `zdpop_config.yaml` file. The default location for the
     file is `/etc/zdpop_config.yaml`. You can override this with the 
     `-c` or `--config-file` command line option. An example file is 
     included.
 
-4.  The zdpop_data.csv file contains the data to be loaded in the form:
+3.  The zdpop_data.csv file contains the data to be loaded in the form:
     
         org_name,user_name,email_address
     
     The default file location is `/tmp/zdpop_data.csv` but you can
     override this via the `-d` or `--data-file` command line option.
 
-5.  Run the command to create the required organizations and users:
+    You can download this file from the front-end.
+
+4.  Run the command to create the required organizations and users:
 
         $ zdpop
 
