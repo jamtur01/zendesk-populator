@@ -1,21 +1,29 @@
+<br />
+
 <h1>Welcome to <%= @app_name %></h1>
 
-<h2>Let us know that you want us to let you know!</h2>
+<br />
+<br />
+<br />
 
-<form action='/create' method='post'>
-  <div>
-
-    <label for='company'>Enter the new user's company</label>
-    <input type='text' name='company' /><br />
-
-    <label for='Name'>Enter the new user's name</label>
-    <input type='text' name='name' /><br />
-
-    <label for='email'>Enter the new user's email address</label>
-    <input type='text' name='email' /><br />
-
+<div style="width: 360px; border: 1px dotted #333; padding: 5px; margin: 0px auto;">
+  <form action='/create' method='post'>
+    <div class="row">
+      <span class="label">Company:</span><span class="formw"><input name='company' type="text" size="25" /></span>
+    </div>
+    <div class="row">
+      <span class="label">Name:</span><span class="formw"><input name='name' type="text" size="25" /></span>
+    </div>
+    <div class="row">
+      <span class="label">Email:</span><span class="formw"><input name='email' type="text" size="25" /></span>
+    </div>
+    <div class="row">
+      <input type='submit' name='submit' value='Add new user' />
+      <input type='hidden' name='referer' value='<%= request.env["HTTP_REFERER"] %>'>
+    </div>
+  <div class="spacer">
+  &nbsp;
   </div>
+ </form>
 
-  <input type='submit' name='submit' value='Add new user' />
-  <input type='hidden' name='referer' value='<%= request.env["HTTP_REFERER"] %>'>
-</form>
+</div>

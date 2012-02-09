@@ -1,0 +1,40 @@
+/* Document */
+
+html
+{
+  background: #141414;
+}
+
+body
+{
+  font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+  font-size: 1em;
+  line-height: 1.4em;
+  color: #ccc;
+}
+
+div.row {
+  clear: both;
+  padding-top: 5px;
+  }
+
+div.row span.label {
+  float: left;
+  width: 100px;
+  text-align: right;
+  }
+
+div.row span.formw {
+  float: right;
+  width: 235px;
+  text-align: left;
+  }
+
+div.spacer {
+  clear: both;
+  }
+
+h1
+ {
+   text-align: center;
+ }
