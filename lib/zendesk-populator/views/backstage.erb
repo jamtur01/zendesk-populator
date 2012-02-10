@@ -1,5 +1,14 @@
+<br />
+
 <h1><%= @app_name %> backstage</h1>
 
-<h2><%= pluralize(@user_count, "user", "users") %>.</h2>
+<br />
+<br />
+<br />
 
-<a href="/backstage/csv">Download emails in a CSV file</a>
+<div style="width: 360px; border: 1px dotted #333; padding: 5px; margin: 0px auto;">
+
+  <p style="padding-left: 40px"><%= pluralize(@user_count, "new user", "new users") %>.</p>
+  <p style="padding-left: 40px"><a href="/backstage/csv">Download emails in a CSV file</a></p>
+
+</div>
