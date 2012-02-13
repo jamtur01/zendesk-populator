@@ -21,7 +21,7 @@ $:.unshift(File.expand_path(File.join(File.dirname(__FILE__), "..", "lib")))
 
 require 'rubygems'
 require 'optparse'
-require 'zendesk-populator/populator'
+require 'zendesk-populator'
 require 'version'
 
 options = {}
@@ -34,13 +34,7 @@ optparse = OptionParser.new do |opts|
   opts.separator ''
   opts.separator 'Configuration options:'
 
-  options[:cfile] = '/etc/zdpop_config.yaml'
-  opts.on( '-c', '--config-file', 'The location of the zdpop configuration file.') { |cfile|
-    options[:cfile] = cfile
-  }
-
-  options[:dfile] = '/tmp/zdpop_data.csv'
-  opts.on( '-d', '--data-file', 'The location of the CSV data file containing the users and orgs to be created.') { |dfile|
+  opts.on( '-d', '--data-file FILE', 'The location of the CSV data file containing the users and orgs to be created.') { |dfile|
     options[:dfile] = dfile
   }
 
@@ -60,7 +54,8 @@ end
 
 begin
   optparse.parse!
-  ZendeskPopulator::Populator.new(options)
+  raise OptionParser::MissingArgument if options[:dfile].nil?
+  ZendeskPopulator::Populate.new(options)
 rescue OptionParser::InvalidArgument, OptionParser::InvalidOption, OptionParser::MissingArgument
   puts $!.to_s
   puts optparse

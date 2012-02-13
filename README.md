@@ -6,12 +6,9 @@ Description
 
 Zendesk Populator has two components:
 
-* A front-end for adding users to a DB and exporting to CSV
+* A front-end for adding users to Zendesk
 * A simple command line tool to populate Zendesk organizations and users
 from a CSV file.
-
-They'll shortly also be integrated but currently run seperately.
-
 
 ## Front-End ##
 
@@ -21,7 +18,8 @@ They'll shortly also be integrated but currently run seperately.
 
         $ bundle install
 
-2. Create config.yml and database.yml from the example files
+2. Create config.yml and database.yml from the example files. Update
+   them you required configuration.
 
 3. Run database migration.
 
@@ -32,7 +30,9 @@ They'll shortly also be integrated but currently run seperately.
 5. You can now enter new users. You must supply the company name, full
    name and email address.
 
-6. Browse to http://application/backstage to see the currently included
+6. Click "Add new user" and the new user will be created.
+
+7. You can also browse to http://application/backstage to see the currently included
    users and download them as a CSV file. This section is password 
    protected using the username and password defined in the config.yml
    file.
@@ -44,23 +44,16 @@ They'll shortly also be integrated but currently run seperately.
 1. Run bundler
 
 2.  Update the `zendesk_site`, `zendesk_user` and `zendesk_password` 
-    variables in the `zdpop_config.yaml` file. The default location for the
-    file is `/etc/zdpop_config.yaml`. You can override this with the 
-    `-c` or `--config-file` command line option. An example file is 
-    included.
+    variables in the `config.yml` file.
 
-3.  The zdpop_data.csv file contains the data to be loaded in the form:
-    
+3.  Create a data file containing the accounts to be loaded in the form:
+
         org_name,user_name,email_address
-    
-    The default file location is `/tmp/zdpop_data.csv` but you can
-    override this via the `-d` or `--data-file` command line option.
 
-    You can download this file from the front-end.
+4.  Run the zdpop command with the `-d` or `--data-file` command line option 
+    to specify the location of the data file.
 
-4.  Run the command to create the required organizations and users:
-
-        $ zdpop
+        $ zdpop -d newaccounts.csv
 
 Author
 ------

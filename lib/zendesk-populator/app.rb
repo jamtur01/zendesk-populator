@@ -1,3 +1,4 @@
+require 'zendesk-populator/util'
 require 'sinatra'
 require 'haml'
 require 'sass'
@@ -15,16 +16,10 @@ else
   CSVKLASS = CSV
 end
 
-def load_configuration(file, name)
-  if !File.exist?(file)
-    puts "There's no configuration file at #{file}!"
-    exit!
-  end
-  const_set(name, YAML.load_file(file))
-end
-
 module ZendeskPopulator
   class Application < Sinatra::Base
+
+    extend ZendeskPopulator::Util
 
     configure do
       load_configuration("config.yml", "APP_CONFIG")
@@ -38,6 +33,7 @@ module ZendeskPopulator
 
     set :public_folder, File.join(File.dirname(__FILE__), 'public')
     set :views, File.join(File.dirname(__FILE__), 'views')
+    disable :show_exceptions
 
     class User < ActiveRecord::Base
       validates_presence_of :company,:name,:email
@@ -65,7 +61,12 @@ module ZendeskPopulator
                        :name     => params[:name],
                        :email    => params[:email],
                        :referer  => params[:referer])
-      if @user.save
+
+      data = { "company"  => params[:company],
+               "name"     => params[:name],
+               "email"    => params[:email] }
+
+      if @user.save && ZendeskPopulator::Populate.new(data)
         redirect "/?m=success"
       else
         redirect "/?m=invalid"
@@ -89,6 +90,11 @@ module ZendeskPopulator
       headers "Content-Disposition" => "attachment;filename=newusers.csv",
               "Content-Type" => "text/csv"
       csv_content
+    end
+
+    error do
+      @error = "Sorry there was a nasty error! Please let Operations know that: " + env['sinatra.error']
+      erb :error
     end
 
     helpers do

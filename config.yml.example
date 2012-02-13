@@ -1,2 +1,5 @@
 admin_username: admin
 admin_password: admin
+zendesk_site: 'https://support.example.com'
+zendesk_user: user@example.com
+zendesk_password: password
