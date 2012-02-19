@@ -22,8 +22,8 @@ module ZendeskPopulator
     extend ZendeskPopulator::Util
 
     configure do
-      load_configuration("config.yml", "APP_CONFIG")
-      load_configuration("database.yml", "DB_CONFIG")
+      load_configuration("config/config.yml", "APP_CONFIG")
+      load_configuration("config/database.yml", "DB_CONFIG")
 
       ActiveRecord::Base.establish_connection(
         :adapter  => DB_CONFIG['adapter'],
