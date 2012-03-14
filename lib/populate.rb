@@ -1,9 +1,6 @@
-require 'zendesk-populator/util'
-require 'yaml'
-require 'csv'
+require 'util'
 require 'uri'
 require 'httparty'
-require 'pp'
 
 module ZendeskPopulator
   class Populate
