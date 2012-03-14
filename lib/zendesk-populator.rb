@@ -28,8 +28,8 @@ module ZendeskPopulator
       load_configuration("config/database.yml", "DB_CONFIG")
 
       ActiveRecord::Base.establish_connection(
-        :adapter  => DB_CONFIG['adapter'],
-        :database => DB_CONFIG['database']
+        :adapter  => DB_CONFIG['production']['adapter'],
+        :database => DB_CONFIG['production']['database']
       )
     end
 
