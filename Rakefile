@@ -3,11 +3,11 @@ namespace :db do
     require 'active_record'
     require 'logger'
 
-    DB_CONFIG = YAML.load_file("database.yml")
+    DB_CONFIG = YAML::load(File.open('config/database.yml'))
 
     ActiveRecord::Base.establish_connection(
-      :adapter  => DB_CONFIG['adapter'],
-      :database => DB_CONFIG['database']
+      :adapter  => DB_CONFIG['production']['adapter'],
+      :database => DB_CONFIG['production']['database']
     )
   end
 
