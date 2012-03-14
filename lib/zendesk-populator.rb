@@ -33,8 +33,7 @@ module ZendeskPopulator
       )
     end
 
-    #set :public_folder, File.join(File.dirname(__FILE__), 'public')
-    #set :views, File.join(File.dirname(__FILE__), 'views')
+    set :public_folder, File.join(File.dirname(__FILE__), '..', 'public')
     disable :show_exceptions
 
     class User < ActiveRecord::Base
