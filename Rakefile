@@ -1,5 +1,3 @@
-require "bundler/gem_tasks"
-
 namespace :db do
   task :environment do
     require 'active_record'
