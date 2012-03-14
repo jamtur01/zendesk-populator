@@ -46,11 +46,13 @@ module ZendeskPopulator
     end
 
     get '/' do
+      protected!
       flash_message(params[:m])
       erb :index
     end
 
     post '/create' do
+      protected!
       redirect "/?m=blank" if params[:email].blank?
 
       if User.count(:conditions => { :email => params[:email] }) > 0

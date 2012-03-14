@@ -1,3 +1,4 @@
-require './lib/zendesk-populator/app.rb'
+$:.unshift(File.expand_path(File.join(File.dirname(__FILE__), "lib")))
+require 'zendesk-populator'
 
 run ZendeskPopulator::Application
