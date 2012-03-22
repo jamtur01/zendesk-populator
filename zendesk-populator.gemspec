@@ -23,6 +23,7 @@ Gem::Specification.new do |s|
   s.summary = "A command line tool to generate Zendesk orgs and users from CSV."
   s.add_dependency(%q<httparty>, [">= 0"])
   s.add_dependency(%q<sinatra>, [">= 0"])
+  s.add_dependency(%q<sinatra-static-assets>, [">= 0"])
   s.add_dependency(%q<haml>, [">= 0"])
   s.add_dependency(%q<sass>, [">= 0"])
   s.add_dependency(%q<sqlite3>, [">= 0"])

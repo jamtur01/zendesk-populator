@@ -1,5 +1,6 @@
 namespace :db do
   task :environment do
+    require 'rubygems'
     require 'active_record'
     require 'logger'
 

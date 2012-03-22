@@ -2,6 +2,7 @@ require 'util'
 require 'populate'
 require 'version'
 require 'sinatra'
+require 'sinatra/static_assets'
 require 'haml'
 require 'sass'
 require 'fastercsv'
@@ -21,6 +22,7 @@ end
 module ZendeskPopulator
   class Application < Sinatra::Base
 
+    register Sinatra::StaticAssets
     extend ZendeskPopulator::Util
 
     configure do
@@ -44,6 +46,7 @@ module ZendeskPopulator
 
     before do
       @app_name = "Zendesk Populator"
+      request.env['PATH_INFO'] = '/' if request.env['PATH_INFO'].empty?
     end
 
     get '/' do
