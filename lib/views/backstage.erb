@@ -9,6 +9,6 @@
 <div style="width: 360px; border: 1px dotted #333; padding: 5px; margin: 0px auto;">
 
   <p style="padding-left: 40px"><%= pluralize(@user_count, "new user", "new users") %>.</p>
-  <p style="padding-left: 40px"><a href="/backstage/csv">Download emails in a CSV file</a></p>
+  <p style="padding-left: 40px"><a href="<%= url('/backstage/csv') %>">Download emails in a CSV file</a></p>
 
 </div>

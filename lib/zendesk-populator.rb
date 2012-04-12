@@ -2,6 +2,7 @@ require 'util'
 require 'populate'
 require 'version'
 require 'sinatra'
+require 'sinatra/url_for'
 require 'sinatra/static_assets'
 require 'fastercsv'
 require 'active_record'
@@ -34,7 +35,8 @@ module ZendeskPopulator
     end
 
     set :public_folder, File.join(File.dirname(__FILE__), '..', 'public')
-    disable :show_exceptions
+		enable :logging, :dump_errors, :raise_errors
+    enable :show_exceptions
 
     class User < ActiveRecord::Base
       validates_presence_of :company,:name,:email
@@ -55,10 +57,10 @@ module ZendeskPopulator
 
     post '/create' do
       protected!
-      redirect "/?m=blank" if params[:email].blank?
+      redirect url_for("/?m=blank") if params[:email].blank?
 
       if User.count(:conditions => { :email => params[:email] }) > 0
-        redirect "/?m=email_taken"
+        redirect url_for("/?m=email_taken")
       end
 
       @user = User.new(:company  => params[:company],
@@ -71,9 +73,9 @@ module ZendeskPopulator
                "email"    => params[:email] }
 
       if @user.save && ZendeskPopulator::Populate.new(data)
-        redirect "/?m=success"
+        redirect url_for("/?m=success")
       else
-        redirect "/?m=invalid"
+        redirect url_for("/?m=invalid")
       end
     end
 

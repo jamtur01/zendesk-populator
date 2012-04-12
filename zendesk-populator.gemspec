@@ -24,6 +24,7 @@ Gem::Specification.new do |s|
   s.add_dependency(%q<httparty>, [">= 0"])
   s.add_dependency(%q<sinatra>, [">= 0"])
   s.add_dependency(%q<sinatra-static-assets>, [">= 0"])
+  s.add_dependency(%q<emk-sinatra-url-for>, [">= 0"])
   s.add_dependency(%q<sqlite3>, [">= 0"])
   s.add_dependency(%q<fastercsv>, [">= 0"])
   s.add_dependency(%q<activerecord>, ["3.0.3"])
