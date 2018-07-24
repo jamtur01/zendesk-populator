@@ -2,7 +2,7 @@ PATH
   remote: .
   specs:
     zendesk-populator (0.0.5)
-      activerecord (= 3.0.3)
+      activerecord (= 3.1.0)
       emk-sinatra-url-for
       fastercsv
       httparty
@@ -13,18 +13,21 @@ PATH
 GEM
   remote: http://rubygems.org/
   specs:
-    activemodel (3.0.3)
-      activesupport (= 3.0.3)
-      builder (~> 2.1.2)
-      i18n (~> 0.4)
-    activerecord (3.0.3)
-      activemodel (= 3.0.3)
-      activesupport (= 3.0.3)
-      arel (~> 2.0.2)
-      tzinfo (~> 0.3.23)
-    activesupport (3.0.3)
-    arel (2.0.10)
-    builder (2.1.2)
+    activemodel (3.1.0)
+      activesupport (= 3.1.0)
+      bcrypt-ruby (~> 3.0.0)
+      builder (~> 3.0.0)
+      i18n (~> 0.6)
+    activerecord (3.1.0)
+      activemodel (= 3.1.0)
+      activesupport (= 3.1.0)
+      arel (~> 2.2.1)
+      tzinfo (~> 0.3.29)
+    activesupport (3.1.0)
+      multi_json (~> 1.0)
+    arel (2.2.3)
+    bcrypt-ruby (3.0.1)
+    builder (3.0.4)
     concurrent-ruby (1.0.5)
     emk-sinatra-url-for (0.2.1)
       sinatra (>= 0.9.1.1)
@@ -33,6 +36,7 @@ GEM
       multi_xml (>= 0.5.2)
     i18n (0.9.5)
       concurrent-ruby (~> 1.0)
+    multi_json (1.13.1)
     multi_xml (0.6.0)
     mustermann (1.0.2)
     rack (2.0.5)
