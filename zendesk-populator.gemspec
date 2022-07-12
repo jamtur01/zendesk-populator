@@ -27,6 +27,6 @@ Gem::Specification.new do |s|
   s.add_dependency(%q<emk-sinatra-url-for>, [">= 0"])
   s.add_dependency(%q<sqlite3>, [">= 0"])
   s.add_dependency(%q<fastercsv>, [">= 0"])
-  s.add_dependency(%q<activerecord>, ["4.1.14.1"])
+  s.add_dependency(%q<activerecord>, "7.0.3.1")
 end
 
