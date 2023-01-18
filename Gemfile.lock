@@ -2,7 +2,7 @@ PATH
   remote: .
   specs:
     zendesk-populator (0.0.5)
-      activerecord (= 7.0.3.1)
+      activerecord (= 7.0.4.1)
       emk-sinatra-url-for
       fastercsv
       httparty
@@ -13,12 +13,12 @@ PATH
 GEM
   remote: http://rubygems.org/
   specs:
-    activemodel (7.0.3.1)
-      activesupport (= 7.0.3.1)
-    activerecord (7.0.3.1)
-      activemodel (= 7.0.3.1)
-      activesupport (= 7.0.3.1)
-    activesupport (7.0.3.1)
+    activemodel (7.0.4.1)
+      activesupport (= 7.0.4.1)
+    activerecord (7.0.4.1)
+      activemodel (= 7.0.4.1)
+      activesupport (= 7.0.4.1)
+    activesupport (7.0.4.1)
       concurrent-ruby (~> 1.0, >= 1.0.2)
       i18n (>= 1.6, < 2)
       minitest (>= 5.1)
@@ -30,27 +30,29 @@ GEM
     httparty (0.21.0)
       mini_mime (>= 1.0.0)
       multi_xml (>= 0.5.2)
-    i18n (1.11.0)
+    i18n (1.12.0)
       concurrent-ruby (~> 1.0)
     mini_mime (1.1.2)
-    minitest (5.16.2)
+    mini_portile2 (2.8.1)
+    minitest (5.17.0)
     multi_xml (0.6.0)
     mustermann (3.0.0)
       ruby2_keywords (~> 0.0.1)
-    rack (2.2.4)
-    rack-protection (3.0.4)
+    rack (2.2.6.2)
+    rack-protection (3.0.5)
       rack
     ruby2_keywords (0.0.5)
-    sinatra (3.0.4)
+    sinatra (3.0.5)
       mustermann (~> 3.0)
       rack (~> 2.2, >= 2.2.4)
-      rack-protection (= 3.0.4)
+      rack-protection (= 3.0.5)
       tilt (~> 2.0)
     sinatra-static-assets (1.0.4)
       sinatra (>= 1.1.0)
-    sqlite3 (1.4.4)
+    sqlite3 (1.6.0)
+      mini_portile2 (~> 2.8.0)
     tilt (2.0.11)
-    tzinfo (2.0.4)
+    tzinfo (2.0.5)
       concurrent-ruby (~> 1.0)
 
 PLATFORMS
